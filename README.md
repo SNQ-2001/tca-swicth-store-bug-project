@@ -18,5 +18,5 @@ UIKit Internal bug: Unbalanced call to _endOcclusion, please file a feedback rep
 |-|-|
 |<video src="https://github.com/SNQ-2001/tca-swicth-store-bug-project/assets/84154073/984b1ab1-e145-48c5-8834-7a2e929a48ee" width="50%"></video>|<video src="https://github.com/SNQ-2001/tca-swicth-store-bug-project/assets/84154073/c5a12b40-9793-46d8-85ac-613c0b0eb8cd" width="50%"></video>|
 
-## 原因と解決策求む！！
+## 解決策求む！！
 `TabView`も`NavigationStack`も使いたいのでUIは変えずにこの問題を解決したい
