@@ -14,7 +14,7 @@ public struct RootReducer: Reducer {
     public init() {}
 
     public struct State: Equatable {
-        var currentState: CurrentState? = .signIn(.init())
+        @BindingState var currentState: CurrentState? = .signIn(.init())
 
         public init() {}
 
@@ -24,12 +24,15 @@ public struct RootReducer: Reducer {
         }
     }
 
-    public enum Action {
+    public enum Action: BindableAction {
         case signIn(SignInReducer.Action)
         case home(HomeReducer.Action)
+        case binding(BindingAction<State>)
     }
 
     public var body: some Reducer<State, Action> {
+        BindingReducer()
+
         Scope(state: \.currentState, action: /.self) {
             Scope(state: /State.CurrentState.signIn, action: /Action.signIn) {
                 SignInReducer()
@@ -48,9 +51,13 @@ public struct RootReducer: Reducer {
                 state.currentState = .signIn(.init())
                 return .none
             case .home(.tab1(.presentation1(.presented(.presentation2(.presented(.onSignOutButtonTapped)))))):
-                state.currentState = .signIn(.init())
-                return .none
+                state.currentState = .home(.init())
+                return .run { send in
+                    await send(.set(\.$currentState, .signIn(.init())))
+                }
             case .home:
+                return .none
+            case .binding:
                 return .none
             }
         }
