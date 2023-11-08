@@ -22,7 +22,7 @@ public struct Presentation1View: View {
     }
 
     public var body: some View {
-        // MARK: `NavigationStack`がないと正常に動作する
+        // MARK: `NavigationStack`がないと正常に動作する(ただ、navigationTitleを表示したい)
         /// ```
         /// List {
         ///     Button {
@@ -45,6 +45,8 @@ public struct Presentation1View: View {
                     Text("Presentation2View表示")
                 }
             }
+            .navigationTitle("Presentation1View")
+            .navigationBarTitleDisplayMode(.inline)
             .sheet(store: store.scope(state: \.$presentation2, action: Presentation1Reducer.Action.presentation2)) { store in
                 Presentation2View(store: store)
             }
