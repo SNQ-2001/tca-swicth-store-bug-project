@@ -14,6 +14,7 @@ UIKit Internal bug: Unbalanced call to _endOcclusion, please file a feedback rep
 `TabView`の中に`NavigationStack`がはいってることでバグが起きてる気がする
 
 ## バグ動画
+`SwitchStore`で切り替えると閉じたはずのシートが表示されてしまう
 |正常|バグ|
 |-|-|
 |<video src="https://github.com/SNQ-2001/tca-swicth-store-bug-project/assets/84154073/984b1ab1-e145-48c5-8834-7a2e929a48ee" width="50%"></video>|<video src="https://github.com/SNQ-2001/tca-swicth-store-bug-project/assets/84154073/c5a12b40-9793-46d8-85ac-613c0b0eb8cd" width="50%"></video>|
