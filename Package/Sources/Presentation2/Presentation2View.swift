@@ -22,7 +22,7 @@ public struct Presentation2View: View {
 
     public var body: some View {
         Button {
-            viewStore.send(.onSignOutButtonTapped)
+            viewStore.send(.onSignOutButtonTapped, animation: .default)
         } label: {
             Text("サインアウト")
         }
