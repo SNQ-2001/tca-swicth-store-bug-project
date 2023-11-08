@@ -18,12 +18,14 @@ public struct Presentation2Reducer: Reducer {
     public enum Action {
         case onSignOutButtonTapped
     }
+    
+    @Dependency(\.dismiss) private var dismiss
 
     public var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
             case .onSignOutButtonTapped:
-                return .none
+                return .run { _ in await dismiss() }
             }
         }
     }

@@ -22,6 +22,8 @@ public struct Presentation1Reducer: Reducer {
         case onShowPresentation2ButtonTapped
         case presentation2(PresentationAction<Presentation2Reducer.Action>)
     }
+    
+    @Dependency(\.dismiss) private var dismiss
 
     public var body: some Reducer<State, Action> {
         Reduce { state, action in
@@ -29,6 +31,8 @@ public struct Presentation1Reducer: Reducer {
             case .onShowPresentation2ButtonTapped:
                 state.presentation2 = .init()
                 return .none
+            case .presentation2(.presented(.onSignOutButtonTapped)):
+                return .run { _ in await dismiss() }
             case .presentation2:
                 return .none
             }
